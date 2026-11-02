@@ -1,8 +1,4 @@
-"""Minimal web chat (standard library only).   python web.py  ->  http://127.0.0.1:8000
 
-LEARNING NOTES: shows how one DialogManager can serve many users - each browser
-tab gets its own Session keyed by a random id, so conversations never mix.
-"""
 import argparse
 import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -29,7 +25,7 @@ background:var(--card);color:var(--text);font:inherit}button{padding:0 18px;bord
 const sid=Math.random().toString(36).slice(2),log=document.getElementById('log');
 function add(text,cls,meta){const d=document.createElement('div');d.className='m '+cls;d.textContent=text;log.appendChild(d);
 if(meta){const m=document.createElement('div');m.className='meta';m.textContent=meta;log.appendChild(m)}log.scrollTop=log.scrollHeight}
-add("Hi! I'm Sam. Try: weather in Paris, what is 12 x 12, tell me a joke, how do you work","bot");
+add("Hi! I'm Sam. Try: weather in Mumbai, what is 9+10, tell me a joke, how do you work","bot");
 document.getElementById('f').onsubmit=async e=>{e.preventDefault();const i=document.getElementById('t'),v=i.value.trim();if(!v)return;
 i.value='';add(v,'me');try{const r=await fetch('/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sid,message:v})});
 const j=await r.json();add(j.reply,'bot',j.route+(j.intent?' / '+j.intent:'')+' / '+j.confidence.toFixed(2))}catch(_){add('Connection problem.','bot')}};
