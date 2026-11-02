@@ -1,0 +1,8 @@
+# Required
+numpy>=1.24
+
+# Recommended: the PyTorch backend (without it the bot uses the built-in NumPy network)
+torch>=2.0
+
+# Optional upgrades
+# sentence-transformers>=2.2   # semantic embeddings:  python train.py --encoder sbert

@@ -1,84 +1,499 @@
 {
+  "fallback": [
+    "Hmm, I'm not sure I understood that. Could you rephrase it?",
+    "I don't know that one yet. You can teach me with /teach <intent> in the terminal.",
+    "That's outside my skills right now - try 'what can you do'?"
+  ],
   "intents": [
     {
       "tag": "greeting",
+      "description": "saying hello",
       "patterns": [
-        "Hi",
-        "Hey",
-        "How are you",
-        "Is anyone there?",
-        "Hello",
-        "Good day"
+        "hi",
+        "hello",
+        "hey",
+        "hey there",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "hello there",
+        "hi bot",
+        "yo",
+        "howdy",
+        "greetings",
+        "hiya",
+        "hi there",
+        "hello sam",
+        "good day",
+        "hey sam",
+        "hello again"
       ],
       "responses": [
-        "Hey :-)",
-        "Hello, thanks for visiting",
-        "Hi there, what can I do for you?",
-        "Hi there, how can I help?"
+        "Hello {name}!",
+        "Hey {name}, nice to see you.",
+        "Hi {name}! What can I do for you?"
+      ]
+    },
+    {
+      "tag": "how_are_you",
+      "description": "how I'm doing",
+      "patterns": [
+        "how are you",
+        "how are you doing",
+        "how's it going",
+        "how do you do",
+        "what's up",
+        "how have you been",
+        "are you okay",
+        "how is your day",
+        "how r u",
+        "you good",
+        "how are things",
+        "how is everything"
+      ],
+      "responses": [
+        "Running smoothly, thanks for asking!",
+        "All systems normal. How about you?",
+        "Doing great - my loss is low today."
       ]
     },
     {
       "tag": "goodbye",
-      "patterns": ["Bye", "See you later", "Goodbye"],
+      "description": "saying goodbye",
+      "patterns": [
+        "bye",
+        "goodbye",
+        "see you later",
+        "see ya",
+        "i have to go",
+        "talk to you later",
+        "good night",
+        "catch you later",
+        "i'm leaving",
+        "farewell",
+        "cya",
+        "bye bye",
+        "gotta run",
+        "i need to go",
+        "i must leave now",
+        "got to go",
+        "see you",
+        "later",
+        "take care",
+        "i'm off now",
+        "that's all for now",
+        "have a nice day",
+        "i have to leave"
+      ],
       "responses": [
-        "See you later, thanks for visiting",
-        "Have a nice day",
-        "Bye! Come back again soon."
+        "Goodbye {name}!",
+        "See you later!",
+        "Bye! Come back any time."
       ]
     },
     {
       "tag": "thanks",
-      "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
-      "responses": ["Happy to help!", "Any time!", "My pleasure"]
-    },
-    {
-      "tag": "items",
+      "description": "saying thanks",
       "patterns": [
-        "Which items do you have?",
-        "What kinds of items are there?",
-        "What do you sell?"
+        "thanks",
+        "thank you",
+        "thanks a lot",
+        "thank you so much",
+        "much appreciated",
+        "cheers",
+        "appreciate it",
+        "thx",
+        "that helps thanks",
+        "great thanks",
+        "thanks bot",
+        "thank you very much",
+        "thanks for the help",
+        "many thanks"
       ],
       "responses": [
-        "We sell coffee and tea",
-        "We have coffee and tea"
+        "Happy to help!",
+        "Anytime!",
+        "You're welcome :-)"
       ]
     },
     {
-      "tag": "payments",
+      "tag": "name_intro",
+      "description": "telling me your name",
       "patterns": [
-        "Do you take credit cards?",
-        "Do you accept Mastercard?",
-        "Can I pay with Paypal?",
-        "Are you cash only?"
+        "my name is Priya",
+        "call me Alex",
+        "I'm Sam",
+        "I am Jordan",
+        "this is Maria",
+        "you can call me Chen",
+        "my name's Omar",
+        "name is Lena",
+        "hi my name is Kim",
+        "my name is Ravi",
+        "call me Dana",
+        "I'm Taylor",
+        "i am Noor",
+        "this is Ahmed",
+        "hello, my name is Zoe",
+        "i go by Max",
+        "the name's Ivy",
+        "it's Leo",
+        "I'm Maya",
+        "I'm Arjun",
+        "I'm Lucy",
+        "I am Peter",
+        "I'm Fatima",
+        "im Carlos"
+      ],
+      "slots": {
+        "name": {
+          "type": "name",
+          "prompt": "Sure - what's your name?"
+        }
+      },
+      "action": "remember_name"
+    },
+    {
+      "tag": "name_recall",
+      "description": "asking if I remember your name",
+      "patterns": [
+        "what is my name",
+        "do you remember my name",
+        "who am i",
+        "what's my name",
+        "do you know my name",
+        "say my name",
+        "what did i tell you my name was",
+        "can you tell me my name",
+        "what do you call me",
+        "tell me my name",
+        "who am i to you",
+        "do you know who i am",
+        "what is my name again"
+      ],
+      "action": "recall_name"
+    },
+    {
+      "tag": "bot_identity",
+      "description": "who I am",
+      "patterns": [
+        "who are you",
+        "what is your name",
+        "what's your name",
+        "are you a robot",
+        "are you a bot",
+        "who made you",
+        "tell me about yourself",
+        "introduce yourself",
+        "are you human",
+        "what are you",
+        "who built you",
+        "are you real",
+        "describe yourself",
+        "what is your purpose",
+        "tell me about you",
+        "what kind of bot are you",
+        "who exactly are you"
       ],
       "responses": [
-        "We accept VISA, Mastercard and Paypal",
-        "We accept most major credit cards, and Paypal"
+        "I'm Sam, a small chatbot built to learn how chatbots work: intent classification, slot filling, memory and more.",
+        "I'm Sam - a learning project that runs on a tiny neural network."
       ]
     },
     {
-      "tag": "delivery",
+      "tag": "capabilities",
+      "description": "what I can do",
       "patterns": [
-        "How long does delivery take?",
-        "How long does shipping take?",
-        "When do I get my delivery?"
+        "what can you do",
+        "help",
+        "help me",
+        "what are your features",
+        "what do you know",
+        "how can you help me",
+        "show me what you can do",
+        "what commands do you have",
+        "what are you able to do",
+        "can you help me",
+        "what are your skills",
+        "what do you do"
       ],
       "responses": [
-        "Delivery takes 2-4 days",
-        "Shipping takes 2-4 days"
+        "I can chat, tell jokes, do math, check (demo) weather, keep a to-do list, tell the time, and remember your name. Ask me how I work to hear about my internals!"
       ]
     },
     {
-      "tag": "funny",
+      "tag": "datetime",
+      "description": "the current date and time",
       "patterns": [
-        "Tell me a joke!",
-        "Tell me something funny!",
-        "Do you know a joke?"
+        "what time is it",
+        "what's the time",
+        "tell me the time",
+        "current time",
+        "what's the date today",
+        "what day is it",
+        "today's date",
+        "what is today's date",
+        "what day is it today",
+        "do you have the time",
+        "time please",
+        "date please",
+        "what is the time now"
       ],
-      "responses": [
-        "Why did the hipster burn his mouth? He drank the coffee before it was cool.",
-        "What did the buffalo say when his son left for college? Bison."
-      ]
+      "action": "datetime"
+    },
+    {
+      "tag": "weather",
+      "description": "the weather forecast",
+      "patterns": [
+        "what's the weather",
+        "weather in London",
+        "what's the weather like in Paris",
+        "will it rain tomorrow",
+        "is it sunny today",
+        "weather forecast for Tokyo",
+        "how's the weather in Mumbai tomorrow",
+        "do i need an umbrella",
+        "temperature in Delhi",
+        "what's the forecast",
+        "is it going to be hot tomorrow",
+        "weather",
+        "forecast for Friday",
+        "weather in New York on Monday",
+        "how cold is it in Berlin",
+        "and tomorrow",
+        "what about tomorrow",
+        "how about tomorrow",
+        "what about Paris",
+        "and in London",
+        "how about Monday",
+        "what about the day after tomorrow",
+        "is it going to rain",
+        "how's the weather"
+      ],
+      "slots": {
+        "city": {
+          "type": "city",
+          "prompt": "Which city?",
+          "remember": true
+        },
+        "date": {
+          "type": "date",
+          "default": "today"
+        }
+      },
+      "action": "weather"
+    },
+    {
+      "tag": "calculator",
+      "description": "a calculation",
+      "patterns": [
+        "what is 5 plus 3",
+        "calculate 12 * 7",
+        "2 + 2",
+        "what's 15 times 4",
+        "compute 100 / 8",
+        "what is 2 to the power of 10",
+        "how much is 20 minus 7",
+        "solve 3 * (4 + 5)",
+        "what is 144 divided by 12",
+        "12 x 12",
+        "math 9 * 9",
+        "(3 + 4) * 5",
+        "calculate 9 - 4",
+        "what is 81 / 9",
+        "add 7 and 8 together",
+        "what is 6 times 7",
+        "how much is 30 plus 12"
+      ],
+      "action": "calc"
+    },
+    {
+      "tag": "joke",
+      "description": "a joke",
+      "patterns": [
+        "tell me a joke",
+        "make me laugh",
+        "got any jokes",
+        "say something funny",
+        "joke please",
+        "i want to hear a joke",
+        "do you know any jokes",
+        "tell a joke",
+        "cheer me up",
+        "tell me something funny",
+        "tell me another joke",
+        "another joke",
+        "i need a laugh",
+        "tell me one more joke",
+        "another joke please",
+        "give me another joke",
+        "one more joke",
+        "tell me a different joke",
+        "tell me a funny joke"
+      ],
+      "action": "joke",
+      "context_set": "joke"
+    },
+    {
+      "tag": "joke_more",
+      "description": "another joke",
+      "patterns": [
+        "another one",
+        "one more",
+        "again",
+        "more",
+        "another",
+        "one more please",
+        "give me another",
+        "do it again",
+        "next one",
+        "again please",
+        "more please"
+      ],
+      "action": "joke",
+      "context_set": "joke",
+      "context_filter": "joke",
+      "context_hint": "Another what? Ask me for a joke first and then say \"another one\" :-)"
+    },
+    {
+      "tag": "todo_add",
+      "description": "adding something to your to-do list",
+      "patterns": [
+        "add buy milk to my todo list",
+        "add call mom to my list",
+        "remind me to pay rent",
+        "add a task",
+        "put finish report on my todo list",
+        "remember to water the plants",
+        "new task",
+        "add task: email Bob",
+        "add walk the dog to my tasks",
+        "todo: book flights",
+        "note down buy eggs",
+        "add something to my list",
+        "add a todo",
+        "add clean the kitchen to my list",
+        "remind me to call the dentist"
+      ],
+      "slots": {
+        "item": {
+          "type": "item",
+          "prompt": "What should I add to your list?"
+        }
+      },
+      "action": "todo_add"
+    },
+    {
+      "tag": "todo_list",
+      "description": "showing your to-do list",
+      "patterns": [
+        "show my todo list",
+        "what's on my list",
+        "list my tasks",
+        "what do i have to do",
+        "show my tasks",
+        "read my todo list",
+        "what are my todos",
+        "show list",
+        "what tasks do i have",
+        "show me my to-do list",
+        "display my list",
+        "what is on my todo list",
+        "what's on my tasks",
+        "do i have anything to do",
+        "show me what's on my list",
+        "what is on my list"
+      ],
+      "action": "todo_list"
+    },
+    {
+      "tag": "ask_docs",
+      "description": "how I work",
+      "patterns": [
+        "how do you work",
+        "how were you built",
+        "how does your training work",
+        "explain your architecture",
+        "how do you decide what i mean",
+        "what is slot filling",
+        "what is an intent classifier",
+        "what is a confidence threshold",
+        "how can i teach you",
+        "how do i retrain you",
+        "what is a neural network",
+        "how do you understand me",
+        "explain how you learn",
+        "what is rag",
+        "how do you remember things",
+        "what is context in a chatbot",
+        "how do i teach you new things",
+        "can i train you",
+        "how do you learn new things",
+        "how can i teach you something",
+        "how do you make decisions",
+        "how are you trained",
+        "what technology are you built with",
+        "explain how your confidence works"
+      ],
+      "route": "knowledge"
+    },
+    {
+      "tag": "out_of_scope",
+      "description": "something outside my skills",
+      "patterns": [
+        "what is the capital of France",
+        "who won the world cup",
+        "explain quantum physics",
+        "how tall is mount everest",
+        "write me a poem",
+        "what is the meaning of life",
+        "who is the president of india",
+        "translate hello to spanish",
+        "how do i bake a cake",
+        "recommend a movie",
+        "what is the population of china",
+        "tell me about black holes",
+        "who invented the telephone",
+        "give me a recipe for pasta",
+        "what's the stock price of apple",
+        "who is the richest person",
+        "how far is the moon",
+        "what is the speed of light",
+        "best restaurants near me",
+        "book me a flight",
+        "tell me about the roman empire",
+        "tell me about dinosaurs",
+        "tell me about pizza",
+        "tell me about the ocean",
+        "who is the prime minister of japan",
+        "where is the eiffel tower",
+        "when did world war two end",
+        "how many people live in india",
+        "what is the boiling point of water",
+        "what is the biggest animal",
+        "explain photosynthesis",
+        "how do airplanes fly",
+        "who painted the mona lisa",
+        "what is bitcoin",
+        "give me investment advice",
+        "i like turtles",
+        "i love music",
+        "i like pizza",
+        "i'm hungry",
+        "i'm tired",
+        "i'm bored",
+        "i am so sleepy",
+        "my favorite color is blue",
+        "this is boring",
+        "i think it is raining",
+        "i don't know",
+        "i like football",
+        "i had a long day",
+        "my dog is sick",
+        "i want to learn guitar",
+        "i hate mondays"
+      ],
+      "route": "fallback"
     }
   ]
 }
